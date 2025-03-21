@@ -8,19 +8,20 @@ on:
     pull_request:
       branches:
         - main
+
 jobs:
     build_and_run:
         runs-on: ubuntu-latest
         
         steps:
         - name: Checkout repository
-          uses: action/checkout@v3
-          
+          uses: actions/checkout@v3  
+
         - name: Install GCC
-          uses: sudo apt update && sudo apt install -y gcc
-          
+          run: sudo apt update && sudo apt install -y gcc 
+
         - name: Compile C program
-          uses: gcc -o output leapyear.c
-          
+          run: gcc -o output leapyear.c  
+
         - name: Run the program
-          uses: ./output
+          run: ./output 

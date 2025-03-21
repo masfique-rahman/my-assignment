@@ -1,10 +1,13 @@
 name: C Program CI/CD
 
 on:
-    push:
-    
     workflow_dispatch:
-    
+    push:
+      branches:
+        -main
+    pull_request:
+      branches:
+        -main
 jobs:
     build_and_run:
         runs-on: ubuntu-latest

@@ -1,23 +1,23 @@
-name: C Program CI/CD
+name: Build and Run C Program
 
 on:
     workflow_dispatch:
     push:
       branches:
-        -main
+        - main
     pull_request:
       branches:
-        -main
+        - main
 jobs:
     build_and_run:
         runs-on: ubuntu-latest
         
         steps:
         - name: Checkout repository
-          uses: action/checkout@v4
+          uses: action/checkout@v3
           
         - name: Install GCC
-          uses: sudo apt-get install -y gcc
+          uses: sudo apt update && sudo apt install -y gcc
           
         - name: Compile C program
           uses: gcc -o output leapyear.c
